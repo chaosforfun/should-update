@@ -1,0 +1,26 @@
+{
+  "name": "should-update-hoc",
+  "version": "1.0.0",
+  "description": "a high order component for promote performance of react component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel -d build/ index.js"
+  },
+  "keywords": [
+    "react",
+    "performance"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:chaosforfun/should-update.git"
+  },
+  "author": "zhaoshichao",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  }
+}
