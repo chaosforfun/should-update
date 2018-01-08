@@ -1,6 +1,6 @@
 {
   "name": "should-update-hoc",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a high order component for promote performance of react component",
   "main": "index.js",
   "scripts": {
