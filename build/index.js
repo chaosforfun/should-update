@@ -9,21 +9,19 @@ var _createClass = function () { function defineProperties(target, props) { for 
 exports.onlyUpdateBy = onlyUpdateBy;
 exports.noUpdateBy = noUpdateBy;
 
-var _react = require('react');
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /*
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 用高阶组件生产一个新的组件,新的组件只会在业务需要时才会重新渲染
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 常规业务有两种
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   1. 组件有N多属性,只有特定的几个属性更新时才需要重新渲染,这时候应该用onlyUpdateBy指定需要重新渲染的属性,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     只有这些指定属性更新时才会重新渲染
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   2. 组件有N多属性,只有特定几个属性更新不需要重新渲染,这时候应该用noUpldateBy指定不需要重新渲染的属性
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                */
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-
+/*
+  用高阶组件生产一个新的组件,新的组件只会在业务需要时才会重新渲染
+  常规业务有两种
+    1. 组件有N多属性,只有特定的几个属性更新时才需要重新渲染,这时候应该用onlyUpdateBy指定需要重新渲染的属性,
+      只有这些指定属性更新时才会重新渲染
+    2. 组件有N多属性,只有特定几个属性更新不需要重新渲染,这时候应该用noUpldateBy指定不需要重新渲染的属性
+ */
 function isEqual(a, b) {
   return a === b;
 }
@@ -41,8 +39,8 @@ function theHOC(propList, isUpdate, SlowComponent) {
     console.info(displayName, tip, propList.toString());
   }
 
-  return _temp = _class = function (_Component) {
-    _inherits(_class, _Component);
+  return _temp = _class = function (_SlowComponent) {
+    _inherits(_class, _SlowComponent);
 
     function _class() {
       _classCallCheck(this, _class);
@@ -76,7 +74,7 @@ function theHOC(propList, isUpdate, SlowComponent) {
     }]);
 
     return _class;
-  }(_react.Component), _class.displayName = 'SU' + displayName, _temp;
+  }(SlowComponent), _class.displayName = 'SU' + displayName, _temp;
 }
 function onlyUpdateBy(propList) {
   return theHOC.bind(null, propList, true);

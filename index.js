@@ -5,8 +5,6 @@
       只有这些指定属性更新时才会重新渲染
     2. 组件有N多属性,只有特定几个属性更新不需要重新渲染,这时候应该用noUpldateBy指定不需要重新渲染的属性
  */
-import { Component } from 'react'
-
 function isEqual(a, b) {
   return a === b
 }
@@ -22,7 +20,7 @@ function theHOC(propList, isUpdate, SlowComponent) {
     console.info(displayName, tip, propList.toString())
   }
 
-  return class extends Component {
+  return class extends SlowComponent {
     static displayName = 'SU' + displayName
     shouldComponentUpdate(nextProps) {
       let {
