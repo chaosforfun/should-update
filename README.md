@@ -1,13 +1,15 @@
 # shouldUpdateHOC [中文](README.cn.md)
 
 to promote performance of react app, you probably will use shouldComponentUpdate, return true of false by if some props changed.
-but it's tedious to add shouldComponentUpdate for very much componets. the shouldUpdateHOC can help you implement the tedious shouldComponentUpdate.
+but it's tedious to add shouldComponentUpdate for very much components. the shouldUpdateHOC can help you implement the tedious shouldComponentUpdate.
 
-shouldUpdateHOC is a hige order component wich can generate a new compoent. the new component only rerender when nessary
+shouldUpdateHOC is a high order component which can generate a new component. the new component only reRender when necessary
 we have two general case:
-1. the component has N props, only some particular should trigger rerender,then you can use onlyUpdateBy to config the special props which will trigger rerender
-2. on the contrary, many props should trigger rerender ,only a litter will not, then you can use
+1. the component has N props, only some particular should trigger reRender,then you can use onlyUpdateBy to config the special props which will trigger reRender
+2. on the contrary, many props should trigger reRender ,only a litter will not, then you can use
 noUpdateBy.
+
+Because of ref is a special prop in React , it can't be passed to child component by props. so we use childRef instead of ref, if you need use ref, please use childRef instead of ref.
 
 ## Usages
 
@@ -34,6 +36,16 @@ noUpdateBy.
     }
   }
   export default HOC(YourComponent)
+  ```
+  ```js
+  import YourComponent from './path/YourComponent'
+  class extends React.Component {
+    render() {
+      // if you need ref, please use childRef instead
+      return <YourComponent childRef={instance => this.myInstance = instance} />
+    }
+  }
+
   ```
 
 ##License

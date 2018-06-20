@@ -9,6 +9,8 @@ shouldUpdateHOC 用高阶组件生产一个新的组件,新的组件只会在业
   只有这些指定属性更新时才会重新渲染
 2. 组件有N多属性,只有特定几个属性更新不需要重新渲染,这时候应该用noUpldateBy指定不需要重新渲染的属性
 
+由于 React 的 ref 是一个特殊的属性,不能通过 props 传递给子组件,所以我们用 childRef 来替代 ref,被这个组件包装过的组件需要用 ref 时请用 childRef 替代.
+
 ## 使用方法
 
     npm install should-update-hoc
@@ -36,6 +38,16 @@ shouldUpdateHOC 用高阶组件生产一个新的组件,新的组件只会在业
   export default HOC(YourComponent)
   ```
 
+  ```js
+  import YourComponent from './path/YourComponent'
+  class extends React.Component {
+    render() {
+      // if you need ref, please use childRef instead
+      return <YourComponent childRef={instance => this.myInstance = instance} />
+    }
+  }
+
+  ```
 ##License
 The MIT License (MIT)
 
