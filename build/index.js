@@ -13,6 +13,10 @@ exports.noUpdateBy = noUpdateBy;
 
 var _react = require('react');
 
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -83,7 +87,7 @@ function theHOC(propList, isUpdate, SlowComponent) {
             childRef = _props.childRef,
             rest = _objectWithoutProperties(_props, ['childRef']);
 
-        return React.createElement(SlowComponent, _extends({ ref: childRef }, rest));
+        return _react2.default.createElement(SlowComponent, _extends({ ref: childRef }, rest));
       }
     }]);
 

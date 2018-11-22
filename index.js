@@ -9,7 +9,7 @@
   需要用 ref 时请用 childRef 替代.
    
  */
-import { Component } from 'react'
+import React, { Component } from 'react'
 
 function isEqual(a, b) {
   return a === b
